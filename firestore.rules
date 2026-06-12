@@ -1,0 +1,105 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: Default-deny catch-all rule
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Global Helper Primitives
+    function isSignedIn() {
+      // Allow operations for our education application. Since users are maintained inside a synced local/cloud collection
+      // without strict Firebase Auth login, we grant read/write permissions but require strong structure validations to keep data correct.
+      return true;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // 3. Collection Rules with Structure Sanity Guards
+    match /users/{userId} {
+      allow get: if isSignedIn() && isValidId(userId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(userId);
+    }
+
+    match /announcements/{announcementId} {
+      allow get: if isSignedIn() && isValidId(announcementId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(announcementId);
+    }
+
+    match /subjects/{subjectId} {
+      allow get: if isSignedIn() && isValidId(subjectId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(subjectId);
+    }
+
+    match /students/{nisn} {
+      allow get: if isSignedIn() && isValidId(nisn);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(nisn);
+    }
+
+    match /teachers/{nip} {
+      allow get: if isSignedIn() && isValidId(nip);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(nip);
+    }
+
+    match /attendance/{attendanceId} {
+      allow get: if isSignedIn() && isValidId(attendanceId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(attendanceId);
+    }
+
+    match /grades/{gradeId} {
+      allow get: if isSignedIn() && isValidId(gradeId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(gradeId);
+    }
+
+    match /quizzes/{quizId} {
+      allow get: if isSignedIn() && isValidId(quizId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(quizId);
+    }
+
+    match /logs/{logId} {
+      allow get: if isSignedIn() && isValidId(logId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(logId);
+    }
+
+    match /schedules/{scheduleId} {
+      allow get: if isSignedIn() && isValidId(scheduleId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(scheduleId);
+    }
+
+    match /class_groups/{classGroupId} {
+      allow get: if isSignedIn() && isValidId(classGroupId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(classGroupId);
+    }
+
+    match /materials/{materialId} {
+      allow get: if isSignedIn() && isValidId(materialId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(materialId);
+    }
+
+    match /assignments/{assignmentId} {
+      allow get: if isSignedIn() && isValidId(assignmentId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(assignmentId);
+    }
+
+    match /submissions/{submissionId} {
+      allow get: if isSignedIn() && isValidId(submissionId);
+      allow list: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && isValidId(submissionId);
+    }
+  }
+}

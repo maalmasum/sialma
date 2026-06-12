@@ -1,0 +1,219 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile database details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "username": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "title": { "type": "string" },
+        "gradeYear": { "type": "string" },
+        "biodata": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "npsn": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["id", "name", "role", "username"]
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "School Announcements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "target": { "type": "string" },
+        "date": { "type": "string" },
+        "author": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["id", "title", "content", "target", "date", "author"]
+    },
+    "SubjectItem": {
+      "title": "SubjectItem",
+      "description": "Academic subjects list",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "teacherName": { "type": "string" },
+        "teacherAvatar": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "category": { "type": "string" },
+        "hoursPerWeek": { "type": "integer" }
+      },
+      "required": ["id", "code", "name", "teacherId", "classGroup", "category"]
+    },
+    "StudentItem": {
+      "title": "StudentItem",
+      "description": "Siswa profiles managed by Admin/Guru",
+      "type": "object",
+      "properties": {
+        "nisn": { "type": "string" },
+        "name": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "gender": { "type": "string" },
+        "status": { "type": "string" },
+        "academicScore": { "type": "integer" }
+      },
+      "required": ["nisn", "name", "classGroup", "gender", "status"]
+    },
+    "TeacherItem": {
+      "title": "TeacherItem",
+      "description": "Guru profiles managed by Admin",
+      "type": "object",
+      "properties": {
+        "nip": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "status": { "type": "string" },
+        "rating": { "type": "integer" },
+        "teachingHours": { "type": "integer" },
+        "avatarUrl": { "type": "string" }
+      },
+      "required": ["nip", "name", "email", "subject", "status"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Attendance history track",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nisn": { "type": "string" },
+        "studentName": { "type": "string" },
+        "status": { "type": "string" },
+        "date": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "required": ["id", "nisn", "studentName", "status", "date", "subjectId"]
+    },
+    "GradeRecord": {
+      "title": "GradeRecord",
+      "description": "Student grading results on subjects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nisn": { "type": "string" },
+        "studentName": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "assignmentScore": { "type": "integer" },
+        "utsScore": { "type": "integer" },
+        "uasScore": { "type": "integer" },
+        "finalScore": { "type": "integer" },
+        "grade": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "required": ["id", "nisn", "studentName", "subjectId", "assignmentScore", "utsScore", "uasScore", "finalScore", "grade"]
+    },
+    "QuizItem": {
+      "title": "QuizItem",
+      "description": "Quiz tests for students",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "questionsCount": { "type": "integer" },
+        "durationMinutes": { "type": "integer" },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "title", "subject", "classGroup", "status"]
+    },
+    "SystemAuditLog": {
+      "title": "SystemAuditLog",
+      "description": "System operational logging records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "level": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "level", "message"]
+    },
+    "ScheduleItem": {
+      "title": "ScheduleItem",
+      "description": "Weekly school timetable",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "day": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "room": { "type": "string" }
+      },
+      "required": ["id", "day", "timeSlot", "subjectId", "room"]
+    },
+    "ClassGroup": {
+      "title": "ClassGroup",
+      "description": "Available school classes list",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "School app registered users"
+    },
+    "/announcements/{announcementId}": {
+      "schema": "Announcement",
+      "description": "Active global/targeted school announcements"
+    },
+    "/subjects/{subjectId}": {
+      "schema": "SubjectItem",
+      "description": "Active learning subjects details"
+    },
+    "/students/{nisn}": {
+      "schema": "StudentItem",
+      "description": "Student details"
+    },
+    "/teachers/{nip}": {
+      "schema": "TeacherItem",
+      "description": "Teacher details"
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "AttendanceRecord",
+      "description": "Historic subject attendances"
+    },
+    "/grades/{gradeId}": {
+      "schema": "GradeRecord",
+      "description": "Academic grading scores"
+    },
+    "/quizzes/{quizId}": {
+      "schema": "QuizItem",
+      "description": "Online class quiz forms"
+    },
+    "/logs/{logId}": {
+      "schema": "SystemAuditLog",
+      "description": "System database operations security and event trail"
+    },
+    "/schedules/{scheduleId}": {
+      "schema": "ScheduleItem",
+      "description": "Weekly scheduling timelines"
+    },
+    "/class_groups/{classGroupId}": {
+      "schema": "ClassGroup",
+      "description": "School active grade-level sections dictionary"
+    }
+  }
+}

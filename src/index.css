@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Force global font consistency for Plus Jakarta Sans */
+* {
+  font-family: "Plus Jakarta Sans", var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Enforce the icon font for material-symbols-outlined */
+.material-symbols-outlined,
+.material-symbols-outlined *,
+[class^="material-"] {
+  font-family: 'Material Symbols Outlined' !important;
+}
+
+/* Keep mono font where needed */
+.mono,
+code,
+pre,
+.font-mono,
+.font-mono * {
+  font-family: var(--font-mono), monospace !important;
+}
+
+.font-clock {
+  font-family: "Plus Jakarta Sans", var(--font-sans), sans-serif;
+}
+
+.digital-clock-pod {
+  background-color: #ecfdf5; /* emerald-50 */
+  color: #065f46; /* emerald-800 */
+  border: 1px solid #a7f3d0; /* emerald-200 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  font-family: "Plus Jakarta Sans", var(--font-sans), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8f9fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Bulletproof Dark Theme Overrides */
+html.dark,
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .bg-white {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+  border-color: #1f2937 !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100\/50,
+.dark .bg-slate-50\/50 {
+  background-color: #1f2937 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .border-slate-100,
+.dark .border-slate-250,
+.dark .border-slate-300 {
+  border-color: #374151 !important;
+}
+
+.dark .text-slate-800,
+.dark .text-slate-905,
+.dark .text-slate-900,
+.dark .text-slate-705,
+.dark .text-slate-700 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-slate-650,
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .text-slate-450,
+.dark .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+.dark .text-emerald-950,
+.dark .text-emerald-900 {
+  color: #acf59a !important; /* light high-contrast teal */
+}
+
+.dark .text-emerald-800,
+.dark .text-emerald-850 {
+  color: #34d399 !important;
+}
+
+/* Inputs and interactive items */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+
+.dark select option {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c9b9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #717a6c;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c0c9b9;
+  border-radius: 10px;
+}
+
+/* Tab animations and transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
